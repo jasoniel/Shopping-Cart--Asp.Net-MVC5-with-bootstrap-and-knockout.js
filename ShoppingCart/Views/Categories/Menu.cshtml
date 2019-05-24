@@ -1,0 +1,19 @@
+﻿
+@model List<ShoppingCart.ViewModels.CategoryViewModel>
+
+@{ 
+    var selectedCategoryId = ViewBag.SelectedCategoryId;
+}
+
+
+<div class="list-group">
+    <h4 class="list-group-item-heading">Categories</h4>
+
+    @foreach (var category in Model)
+    {
+             var currentCategory = selectedCategoryId == category.Id ? "active" : "";
+
+
+           <a href="@Url.Action("Index","Books", new { categoryId = category.Id})" class="list-group-item @currentCategory ">@category.Name</a>
+    }
+</div>
